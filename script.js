@@ -32,13 +32,32 @@ var questionBank = [
     }
 ];
 
+var startButton = document.querySelector(".startBtn");
+//-----------------------------------------------------------------------
+//  Start Screen
+//-----------------------------------------------------------------------
+var startButton = document.querySelector(".startBtn");
+//-----------------------------------------------------------------------
+function startStartScreen () {
+    document.querySelector("#introScreen").style.display = "block";
+    document.querySelector("#highScoreScreen").style.display = "none";
+}
+
+
+//-----------------------------------------------------------------------
+// Quiz screen
+//-----------------------------------------------------------------------
+
 var currentQuestion = 0;
 var currentCorrectAnswer = "";
-var correctAnswerCount = 0
-var startButton = document.querySelector(".startBtn")
-var scoreScreenBtn = document.querySelector(".scoreScreenBtn")
-var questionsScreenBtn = document.querySelector(".questionBtn")
 
+var choiceAEl = document.getElementById("choiceA");
+
+var timer = document.getElementById("timePara");
+var timerId; 
+var secondsLeft = 60;
+
+//-----------------------------------------------------------------------
 function startQuizScreen() {
     //switch to question screen
     document.querySelector("#introScreen").style.display = "none";
@@ -47,13 +66,23 @@ function startQuizScreen() {
     //show first q
     currentQuestion = 0;
     showQuestion();
+    document.getElementById("questionResult").textContent = "";
 
+    // set timer
+    timerId = setInterval(function() {
+        secondsLeft--
+        timer.textContent = secondsLeft;
+        if (secondsLeft == 0) {
+            clearInterval(timerId)
+        }
+    }, 1000);
 }
 
+//-----------------------------------------------------------------------
 function showQuestion() {
     var question = questionBank[currentQuestion];
     document.getElementById("questionText").textContent = question.question;
-    document.getElementById("choiceA").textContent = question.answer.a;
+    choiceAEl.textContent = question.answer.a;
     document.getElementById("choiceB").textContent = question.answer.b;
     document.getElementById("choiceC").textContent = question.answer.c;
     document.getElementById("choiceD").textContent = question.answer.d;
@@ -61,41 +90,96 @@ function showQuestion() {
     currentCorrectAnswer = question.correctAnswer;
 }
 
+//-----------------------------------------------------------------------
 function nextQuestion() {
     if (currentQuestion < questionBank.length - 1){
         currentQuestion++;
         showQuestion();
     }
     else{
+        clearInterval(timerId);
         startScoreScreen();
     }
 }
 
+//-----------------------------------------------------------------------
 function choiceClicked (event) {
     var clickedEl = event.target; 
     if (clickedEl.id == currentCorrectAnswer) {
         document.getElementById("questionResult").textContent = "Correct!"
     } else {
         document.getElementById("questionResult").textContent = "Incorect!"
+        secondsLeft -= 5;
+        timer.textContent = secondsLeft;
+    }
+    nextQuestion();
+}
+
+//-----------------------------------------------------------------------
+//button listeners
+startButton.addEventListener("click", startQuizScreen);
+choiceAEl.addEventListener("click", choiceClicked);
+document.getElementById("choiceB").addEventListener("click", choiceClicked);
+document.getElementById("choiceC").addEventListener("click", choiceClicked);
+document.getElementById("choiceD").addEventListener("click", choiceClicked);
+
+//-----------------------------------------------------------------------
+//  Score Screen
+//-----------------------------------------------------------------------
+var finalScoreEl = document.getElementById("finalScore");
+var scoreScreenUserName = document.getElementById("userNameInput");
+var scoreScreenBtn = document.querySelector(".scoreScreenBtn");
+var highScoreNameList = [];
+var highScoreScoreList = []
+
+//-----------------------------------------------------------------------
+function startScoreScreen() {
+    document.querySelector("#questionsScreen").style.display = "none";
+    document.querySelector("#scoreScreen").style.display = "block";
+    finalScoreEl.textContent = secondsLeft;
+};
+
+//-----------------------------------------------------------------------
+function addNewScore (event) {
+    event.preventDefault();
+
+    var userName = scoreScreenUserName.value;
+    var userScore = secondsLeft;
+    highScoreNameList.push(userName);
+    highScoreScoreList.push(userScore);
+    startHighscoreScreen();
+}
+
+scoreScreenBtn.addEventListener("click", addNewScore);
+
+//-----------------------------------------------------------------------
+//  Highscore Screen
+//-----------------------------------------------------------------------
+var highScoreUlEl = document.getElementById("highScoreUl");
+var highScoreResetButtonEl = document.getElementById("resetHighScore");
+var highScoreGoBackButtonEl = document.getElementById("goBack");
+//-----------------------------------------------------------------------
+function startHighscoreScreen () {
+    document.querySelector("#scoreScreen").style.display = "none";
+    document.querySelector("#highScoreScreen").style.display = "block";
+    
+    highScoreUlEl.innerHTML = "";
+    for (var i = 0; i < highScoreNameList.length; i++){
+        var li = document.createElement("li");
+        li.textContent = highScoreNameList[i]+ " " + highScoreScoreList[i];
+        highScoreUlEl.appendChild(li);
     }
 }
 
-
-//listen for click on start button
-startButton.addEventListener("click", startQuizScreen);
-
-document.getElementById("choiceA").addEventListener("click", choiceClicked);
-document.getElementById("choiceB").addEventListener("click", choiceClicked)
-document.getElementById("choiceC").addEventListener("click", choiceClicked)
-document.getElementById("choiceD").addEventListener("click", choiceClicked)
-
-function startScoreScreen() {
-    document.querySelector("#questionsScreen").style.display = "none";
-    document.querySelector("#highScoreScreen").style.display = "block";
-
+//-----------------------------------------------------------------------
+function resetHighScores(){
+    highScoreNameList = [];
+    highScoreScoreList = [];
 }
 
-questionsScreenBtn.addEventListener("click",nextQuestion);
+highScoreResetButtonEl.addEventListener("click", resetHighScores);
+highScoreGoBackButtonEl.addEventListener("click", startStartScreen);
+
     //start timer / countdown from 60
 //if answer is correct 
     //print correct on screen
@@ -104,3 +188,5 @@ questionsScreenBtn.addEventListener("click",nextQuestion);
     //print incorrect on the screen 
 //show final score when all q answered / timer reached 0
 //save initials and score 
+
+//-----------------------------------------------------------------------

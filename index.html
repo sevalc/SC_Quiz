@@ -9,10 +9,10 @@
 </head>
 <body>
     <div>
+        <section id="timerScreen">
+            <p><span id="timePara">60</span></p>
+        </section>
         <section id="introScreen"> 
-            <section id="timerScreen">
-                <p><span id="timePara">60</span></p>
-            </section>
             <section id="intro">
              <h2>CODING QUIZ CHALLANGE</h2>
              <p>explanation instructions text</p>
@@ -21,25 +21,26 @@
         </section>
         <section id="questionsScreen">
             <p id="questionText"></p>
-            <ul>
+            <ul id="questionChoices">
                 <li id="choiceA"></li>
                 <li id="choiceB"></li>
                 <li id="choiceC"></li>
                 <li id="choiceD"></li>
             </ul>
-            <button class="questionBtn">Next</button>
             <p id="questionResult"></p>
         </section>
         <section id="scoreScreen">
             <p>Quiz is Complete!!</p>
             <p>Your score is: <span id="finalScore"> </span></p>
-            
-            <label for="userName">Enter Initials: </label>
-            <input type="text" placeholder="Enter Initials" name = "userName" id="userName">
-            <button class="scoreScreenBtn">Next</button>
+            <form id="initialSubmitForm" method="post">
+                <label for="userName">Initials: </label>
+                <input type="text" placeholder="Enter Initials" name = "userName" id="userNameInput">
+            </form>
+            <button class="scoreScreenBtn">Submit</button>
         </section>
         <section id="highScoreScreen">
-
+            <ul id="highScoreUl">
+            </ul>>
             <button id="goBack">
                 <p>Go Back</p>
             </button>
