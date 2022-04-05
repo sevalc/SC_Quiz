@@ -20,7 +20,15 @@
             </section>
         </section>
         <section id="questionsScreen">
-            <p id="questionPara"></p>
+            <p id="questionText"></p>
+            <ul>
+                <li id="choiceA"></li>
+                <li id="choiceB"></li>
+                <li id="choiceC"></li>
+                <li id="choiceD"></li>
+            </ul>
+            <button class="questionBtn">Next</button>
+            <p id="questionResult"></p>
         </section>
         <section id="scoreScreen">
             <p>Quiz is Complete!!</p>
@@ -28,8 +36,10 @@
             
             <label for="userName">Enter Initials: </label>
             <input type="text" placeholder="Enter Initials" name = "userName" id="userName">
+            <button class="scoreScreenBtn">Next</button>
         </section>
         <section id="highScoreScreen">
+
             <button id="goBack">
                 <p>Go Back</p>
             </button>
