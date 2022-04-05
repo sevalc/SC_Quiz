@@ -1,4 +1,5 @@
 //create an array with multiple questions. each has 4 choices 
+
 var questionBank = [ 
     {
         question: "What does HTML stand for?",
@@ -26,9 +27,19 @@ var questionBank = [
             a: "HTML",
             b: "Ruby", 
             c: "Javascript",
-            d: "None of the above"
+            d: "None of the above",
         },
         correctAnswer: "choiceC" 
+    },
+    {
+        question: "Inside which HTML element do we put the JavaScript?",
+        answer: {
+            a: "<js>",
+            b: "<scripting>",
+            c: "<script>",
+            d: "<javascript>",
+        },
+        correctAnswer: "choiceC"
     }
 ];
 
@@ -52,6 +63,9 @@ var currentQuestion = 0;
 var currentCorrectAnswer = "";
 
 var choiceAEl = document.getElementById("choiceA");
+var choiceBEl = document.getElementById("choiceB");
+var choiceCEl = document.getElementById("choiceC");
+var choiceDEl = document.getElementById("choiceD");
 
 var timer = document.getElementById("timePara");
 var timerId; 
@@ -74,6 +88,7 @@ function startQuizScreen() {
         timer.textContent = secondsLeft;
         if (secondsLeft == 0) {
             clearInterval(timerId)
+            startScoreScreen()
         }
     }, 1000);
 }
@@ -83,9 +98,9 @@ function showQuestion() {
     var question = questionBank[currentQuestion];
     document.getElementById("questionText").textContent = question.question;
     choiceAEl.textContent = question.answer.a;
-    document.getElementById("choiceB").textContent = question.answer.b;
-    document.getElementById("choiceC").textContent = question.answer.c;
-    document.getElementById("choiceD").textContent = question.answer.d;
+    choiceBEl.textContent = question.answer.b;
+    choiceCEl.textContent = question.answer.c;
+    choiceDEl.textContent = question.answer.d;
 
     currentCorrectAnswer = question.correctAnswer;
 }
@@ -119,9 +134,9 @@ function choiceClicked (event) {
 //button listeners
 startButton.addEventListener("click", startQuizScreen);
 choiceAEl.addEventListener("click", choiceClicked);
-document.getElementById("choiceB").addEventListener("click", choiceClicked);
-document.getElementById("choiceC").addEventListener("click", choiceClicked);
-document.getElementById("choiceD").addEventListener("click", choiceClicked);
+choiceBEl.addEventListener("click", choiceClicked);
+choiceCEl.addEventListener("click", choiceClicked);
+choiceDEl.addEventListener("click", choiceClicked);
 
 //-----------------------------------------------------------------------
 //  Score Screen
