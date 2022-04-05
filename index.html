@@ -8,19 +8,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>CODING QUIZ CHALLANGE</h1>
-        <p>explanation instructions text</p>
-        <button class="startBtn">Start The Quiz</button>
-    </header>
-    <main>
-        <section class="questions">
+    <div>
+        <section id="introScreen"> 
+            <section id="timerScreen">
+                <p><span id="timePara">60</span></p>
+            </section>
+            <section id="intro">
+             <h2>CODING QUIZ CHALLANGE</h2>
+             <p>explanation instructions text</p>
+            <button class="startBtn">Start The Quiz</button>
+            </section>
+        </section>
+        <section id="questionsScreen">
             <p id="questionPara"></p>
         </section>
-        <div class="timer">
-            <p><span id="timePara">60</span></p>
-        </div>
-    </main>
+        <section id="scoreScreen">
+            <p>Quiz is Complete!!</p>
+            <p>Your score is: <span id="finalScore"> </span></p>
+            
+            <label for="userName">Enter Initials: </label>
+            <input type="text" placeholder="Enter Initials" name = "userName" id="userName">
+        </section>
+        <section id="highScoreScreen">
+            <button id="goBack">
+                <p>Go Back</p>
+            </button>
+            <button id="resetHighScore">
+                <p>Reset Highscores</p>
+            </button>
+        </section>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

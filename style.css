@@ -1,0 +1,28 @@
+#introScreen {
+    display:flex;
+    flex-direction: column;
+    
+    
+
+}
+#timerScreen p {
+    text-align: right;
+    
+}
+
+
+.startBtn {
+    background-color: royalblue;
+}
+
+#questionsScreen {
+    display: none;
+}
+
+#scoreScreen {
+    display: none;
+}
+
+#highScoreScreen {
+    display:none;
+}
