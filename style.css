@@ -1,37 +1,87 @@
+:root {
+    --buttons: #DBD0C0;
+    --backgroundC: hsl(34, 80%, 88%);
+    --hoverColor: #AD8B73;
+}
+
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    
+    margin-left: 40px;
 }
+
 #introScreen {
     display:flex;
     flex-direction: column;
+    text-align: center;
 }
 
 #timerScreen p {
-    text-align: right;
-
+    text-align: center;
+    font-size: large;
+    border: 2px solid var(--buttons);
+    border-radius:3px;
+    width: 40px;
+    background-color: var(--buttons);
 }
 
 .startBtn {
-    background-color: royalblue;
+    background-color: var(--buttons);
+    font-size: 15px;
+}
+
+.startBtn:hover {
+    background-color: var(--hoverColor)
 }
 
 #questionsScreen {
     display: none;
 }
 
+#questionsScreen ul li {
+    border: 1px solid var(--buttons);
+    width: 250px;
+    margin:5px;
+    border-radius: 5px;
+    background-color: var(--backgroundC);
+}
+
+#questionsScreen ul li:hover {
+    background-color: var(--hoverColor);
+}
+
 #scoreScreen {
     display: none;
+    font-size: 20px;
+}
+
+.scoreScreenBtn {
+    background-color: var(--buttons);
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.scoreScreenBtn:hover {
+    background-color: var(--hoverColor)
 }
 
 #highScoreScreen {
     display:none;
+    margin-top: 50px;
 }
-#questionsScreen ul li {
-    border: 1px solid purple;
+
+#highScoreScreen ol li {
+    background: var(--backgroundC);
     width: 250px;
     margin:5px;
     border-radius: 5px;
-    background-color: purple;
-    color: white;
+}
+
+#goBack, #resetHighScore {
+    background-color: var(--buttons);
+    font-size: 15px;
+    margin-top: 50px;
+}
+
+#goBack:hover, #resetHighScore:hover {
+    background-color: var(--hoverColor)
 }

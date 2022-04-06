@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coding Quiz</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div>
-        <section id="timerScreen">
-            <p><span id="timePara">60</span></p>
+      <section id="timerScreen">
+        <p><span id="timePara">60</span></p>
+      </section>
+      <section id="introScreen">
+        <section id="intro">
+          <h2>CODING QUIZ CHALLANGE</h2>
+          <p>Test your coding skills with the following Quiz</p>
+          <button class="startBtn">Start The Quiz</button>
         </section>
-        <section id="introScreen"> 
-            <section id="intro">
-             <h2>CODING QUIZ CHALLANGE</h2>
-             <p>Test your coding skills with following Quiz.</p>
-            <button class="startBtn">Start The Quiz</button>
-            </section>
-        </section>
-        <section id="questionsScreen">
-            <p id="questionText"></p>
-            <ul id="questionChoices">
-                <li id="choiceA"></li>
-                <li id="choiceB"></li>
-                <li id="choiceC"></li>
-                <li id="choiceD"></li>
-            </ul>
-            <p id="questionResult"></p>
-        </section>
-        <section id="scoreScreen">
-            <p>Quiz is Complete!!</p>
-            <p>Your score is: <span id="finalScore"> </span></p>
-            <form id="initialSubmitForm" method="post">
-                <label for="userName">Initials: </label>
-                <input type="text" placeholder="Enter Initials" name = "userName" id="userNameInput">
-            </form>
-            <button class="scoreScreenBtn">Submit</button>
-        </section>
-        <section id="highScoreScreen">
-            <ul id="highScoreUl">
-            </ul>>
-            <button id="goBack">
-                <p>Go Back</p>
-            </button>
-            <button id="resetHighScore">
-                <p>Reset Highscores</p>
-            </button>
-        </section>
+      </section>
+      <section id="questionsScreen">
+        <p id="questionText"></p>
+        <ul id="questionChoices">
+          <li id="choiceA"></li>
+          <li id="choiceB"></li>
+          <li id="choiceC"></li>
+          <li id="choiceD"></li>
+        </ul>
+        <p id="questionResult"></p>
+      </section>
+      <section id="scoreScreen">
+        <p>Quiz is Complete!!</p>
+        <p>Your score is: <span id="finalScore"> </span></p>
+        <form id="initialSubmitForm" method="post">
+          <label for="userName">Initials: </label>
+          <input
+            type="text"
+            placeholder="Enter Initials"
+            name="userName"
+            id="userNameInput"
+          />
+        </form>
+        <button class="scoreScreenBtn">Submit</button>
+      </section>
+      <section id="highScoreScreen">
+        <ol id="highScoreUl"></ol>
+        <button id="goBack">Go Back</button>
+        <button id="resetHighScore">Reset Highscores</button>
+      </section>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
